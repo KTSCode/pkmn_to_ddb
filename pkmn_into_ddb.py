@@ -68,16 +68,24 @@ def process_directory(directory_path, table):
 
 
 if __name__ == '__main__':
+    # Set up argument parser to handle command-line arguments
     parser = argparse.ArgumentParser(description='Upload Pokémon data to DynamoDB.')
     parser.add_argument('--profile', type=str, help='AWS profile name.')
     parser.add_argument('--table-name', type=str, required=True, help='DynamoDB table name. (Required)')
     parser.add_argument('--region', type=str, required=True, help='AWS region. (Required)')
+    parser.add_argument('--directory', type=str,
+                        help='Directory containing CSV files. Defaults to the current directory.', default=os.getcwd())
 
+    # Parse the arguments
     args = parser.parse_args()
 
+    # Retrieve the table name and directory from the arguments
     table_name = args.table_name
-    directory = os.path.expanduser('~/Desktop/pkmn_stuff')
+    directory = args.directory
 
+    # Create a DynamoDB resource using the specified profile and region
     dynamodb = create_dynamodb_resource(args.profile, args.region)
     table = dynamodb.Table(table_name)
+
+    # Process the directory to upload data to the specified DynamoDB table
     process_directory(directory, table)
