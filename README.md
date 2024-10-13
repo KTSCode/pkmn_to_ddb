@@ -80,10 +80,11 @@ Josh, here are the instructions to setup and use the [Script](pkmn_into_ddb.py) 
    python pkmn_into_ddb.py --table-name $TABLE_NAME --region $AWS_REGION
    ```
 
-   - To specify a different directory for CSV files, use the `--directory` argument:
-     ```bash
-     python pkmn_into_ddb.py --table-name $TABLE_NAME --region $AWS_REGION --directory <YOUR_DIRECTORY>
-     ```
+   To specify a different directory for CSV files, use the `--directory` argument:
+
+   ```bash
+   python pkmn_into_ddb.py --table-name $TABLE_NAME --region $AWS_REGION --directory <YOUR_DIRECTORY>
+   ```
 
    Optionally, include a profile:
 
