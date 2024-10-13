@@ -1,5 +1,5 @@
 # Pokémon Data in DynamoDB
-Josh, here are the instructions to setup and use the [Script](\[pkmn_into_ddb.py) to put the pokemon data for all 9 generations into DynamoDB. Feel free to pull this repo and add to it, if you create a pull request I can review it and I can help you do whatever you think up with the data.
+Josh, here are the instructions to setup and use the [Script](pkmn_into_ddb.py) to put the Pokémon data for all 9 generations into DynamoDB. Feel free to pull this repo and add to it. If you create a pull request, I can review it and help you with your ideas for the data.
 
 ## Setup:
 1. **Install Homebrew**
@@ -57,7 +57,7 @@ Josh, here are the instructions to setup and use the [Script](\[pkmn_into_ddb.py
 
    - Example:
      ```bash
-     export TABLE_NAME=TestTabel
+     export TABLE_NAME=TestTable
      export AWS_REGION=us-east-1
      ```
 
@@ -74,16 +74,21 @@ Josh, here are the instructions to setup and use the [Script](\[pkmn_into_ddb.py
 
 7. **Run the Script to Put Data into DynamoDB**
 
-   Execute the provided Python script to convert the CSV files and upload data to the DynamoDB table, passing the table name and region:
+   Execute the provided Python script to convert the CSV files and upload data to the DynamoDB table, passing the table name, region, and optionally the directory:
 
    ```bash
    python pkmn_into_ddb.py --table-name $TABLE_NAME --region $AWS_REGION
    ```
 
+   - To specify a different directory for CSV files, use the `--directory` argument:
+     ```bash
+     python pkmn_into_ddb.py --table-name $TABLE_NAME --region $AWS_REGION --directory <YOUR_DIRECTORY>
+     ```
+
    Optionally, include a profile:
 
    ```bash
-   python pkmn_into_ddb.py --table-name $TABLE_NAME --region $AWS_REGION  --profile <YOUR_PROFILE>
+   python pkmn_into_ddb.py --table-name $TABLE_NAME --region $AWS_REGION --profile <YOUR_PROFILE>
    ```
 
 ### Notes:
